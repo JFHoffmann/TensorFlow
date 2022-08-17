@@ -1,0 +1,26 @@
+https://www.tensorflow.org/install/pip#windows-native_1
+
+Install TensorFlow with pip
+
+Install Microsoft Visual C++ Redistributable
+
+Make sure long paths are enabled on Windows:
+Installing gpedit.msc (Group Policy Editor - 'Editor de directivas de grupo local) in Window 10 Home
+Create a new text file and name it activar_politicas.bat with the following:
+@echo off
+pushd "%~dp0"
+
+dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum >List.txt
+dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum >>List.txt
+
+for /f %%i in ('findstr /i . List.txt 2^>nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
+pause
+
+Execute activar_politicas.bat
+
+Click on Windows - Ejecutar: gpedit.msc
+
+Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem
+Double click the Enable NTFS long paths option and enable it.
+
+Configuracion del equipo > Plantillas administrativas > Sistema > Sistema de Archivos > Habilitar rutas de acceso Win32 largas.
