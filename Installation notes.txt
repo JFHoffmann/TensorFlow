@@ -2,7 +2,10 @@ https://www.tensorflow.org/install/pip#windows-native_1
 
 Install TensorFlow with pip
 
-Install Microsoft Visual C++ Redistributable
+1. System requirements
+Windows 7 or higher (64-bit)
+
+2. Install Microsoft Visual C++ Redistributable
 
 Make sure long paths are enabled on Windows:
 Installing gpedit.msc (Group Policy Editor - 'Editor de directivas de grupo local) in Window 10 Home
@@ -24,3 +27,30 @@ Local Computer Policy > Computer Configuration > Administrative Templates > Syst
 Double click the Enable NTFS long paths option and enable it.
 
 Configuracion del equipo > Plantillas administrativas > Sistema > Sistema de Archivos > Habilitar rutas de acceso Win32 largas.
+
+3. Install Miniconda
+Check the installation folder and execute
+Execute the application Windows - Anaconda Prompt (miniconda3) and execute the commands:
+
+Create a new conda environment named tf with the following command.
+conda create --name tf python=3.9
+
+You can deactivate and activate it with the following commands.
+conda deactivate
+conda activate tf
+
+5. GPU setup
+conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0
+
+6. Install TensorFlow
+TensorFlow requires a recent version of pip, so upgrade your pip installation to be sure you're running the latest version.
+pip install --upgrade pip
+If error:
+python.exe -m pip install --upgrade pip
+
+Then, install TensorFlow with pip.
+pip install tensorflow
+
+7. Verify install
+python.exe -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
+python.exe -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
