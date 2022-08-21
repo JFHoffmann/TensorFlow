@@ -39,12 +39,21 @@ You can deactivate and activate it with the following commands.
 conda deactivate
 conda activate tf
 
+5. GPU setup
+
+First install NVIDIA GPU drivers if you have not.
+https://www.nvidia.com/Download/index.aspx
+
+Download and install CUDA
+https://developer.nvidia.com/cuda-toolkit-archive
+
+Download NVIDIA CUDA® Deep Neural Network library (cuDNN)
+https://developer.nvidia.com/cudnn
 Install cudnn copying the files and editing the Environment variables (path)
 https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html
 https://medium.com/geekculture/install-cuda-and-cudnn-on-windows-linux-52d1501a8805
 
-5. GPU setup
-check CUDA version executing nvcc --version in cmd
+Check CUDA version executing nvcc --version in cmd
 conda install -c conda-forge cudatoolkit=11.7 cudnn=8.5.0 --> Does not work
 conda install -c anaconda cudnn
 
@@ -55,8 +64,9 @@ If error:
 python.exe -m pip install --upgrade pip
 
 Then, install TensorFlow with pip.
-pip install tensorflow
+If you have a CUDA enabled GPU:
 pip install tensorflow-gpu
+else: pip install tensorflow
 
 7. Verify install
 python.exe -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
